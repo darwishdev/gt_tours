@@ -16,27 +16,35 @@ const { title = tenant.tenantName } = Astro.props;
   </head>
   <body class="text-black dark:bg-black dark:text-white font-sans min-h-screen">
     <!-- Glass NavBar -->
-    <header class="fixed top-0 z-50 w-full backdrop-blur-lg   border-b border-white/10">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
-        <a href="/">
-        <img
-          src="/gt_logo.webp"
-          class="app-logo"
-          alt="Gulf Elite Logo"
-        />
+<header class="fixed top-0 z-50 w-full backdrop-blur-lg border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+    <a href="/">
+      <img src="/gt_logo.webp" class="app-logo h-8 w-auto" alt="Gulf Elite Logo" />
+    </a>
 
+    <div class="flex items-center gap-8">
+      <nav class="hidden md:flex gap-6 text-sm font-medium">
+        <a href="/" class="hover:text-white/70 transition-colors">Home</a>
+        <a href="/about" class="hover:text-white/70 transition-colors">About</a>
+        <a href="/service" class="hover:text-white/70 transition-colors">Trips</a>
+        <a href="/blog" class="hover:text-white/70 transition-colors">Blog</a>
+        <a href="/contact" class="hover:text-white/70 transition-colors">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3 border-l border-white/20 pl-6">
+        <a href="/en" title="English" class="transition-transform hover:scale-110">
+          <img src="https://flagcdn.com/w40/gb.png" alt="English" class="w-6 h-4 object-cover rounded-sm shadow-sm" />
         </a>
-  
-
-        <nav class="flex gap-4 text-sm font-medium">
-          <a href="/" class="hover:underline">Home</a>
-          <a href="/about" class="hover:underline">About</a>
-          <a href="/service" class="hover:underline">Trips</a>
-          <a href="/blog" class="hover:underline">Blog</a>
-          <a href="/contact" class="hover:underline">Contact</a>
-        </nav>
+        <a href="/de" title="Deutsch" class="transition-transform hover:scale-110">
+          <img src="https://flagcdn.com/w40/de.png" alt="German" class="w-6 h-4 object-cover rounded-sm shadow-sm" />
+        </a>
+        <a href="/ru" title="Русский" class="transition-transform hover:scale-110">
+          <img src="https://flagcdn.com/w40/ru.png" alt="Russian" class="w-6 h-4 object-cover rounded-sm shadow-sm" />
+        </a>
       </div>
-    </header>
+    </div>
+  </div>
+</header>
 
     <!-- Page Content -->
     <main class="mx-auto">
@@ -54,12 +62,13 @@ const { title = tenant.tenantName } = Astro.props;
       <div class="flex flex-col gap-4">
         <a href="/">
         <img
-          src="http://127.0.0.1:54321/storage/v1/object/public/images//logo.png"
+          src="/gt_logo.webp"
+          class="w-32"
           alt="Gulf Elite Logo"
         />
           </a>
         <p class="text-sm text-gray-600 dark:text-gray-400">
-            Gulf Elite Chemicals is a Saudi-based environmental technology company specializing in chemical solutions for sand and soil stabilization. With proprietary 
+Guarantee Tours is a dedicated Egyptian travel company focused on delivering exceptional tour experiences across the country. We combine deep local knowledge with professional service to create journeys that are enriching, smooth, and memorable
           </p>
       </div>
 
@@ -72,7 +81,7 @@ const { title = tenant.tenantName } = Astro.props;
           class="flex flex-col gap-2 text-sm text-gray-600 dark:text-gray-400"
         >
             <li><a href="/about" class="hover:text-green-600">About Us</a></li>
-            <li><a href="/projects" class="hover:text-green-600">Projects</a></li>
+            <li><a href="/trps" class="hover:text-green-600">Trips</a></li>
           <li>
               <a href="/services" class="hover:text-green-600">Services</a>
           </li>
@@ -107,16 +116,15 @@ const { title = tenant.tenantName } = Astro.props;
         <p>
           📞
             <a href={`tel:${tenant.tenantPhone}`} class="hover:text-green-600"
-            >{tenant.tenantPhone}</a
-          >
+            >010 05156462</a>
         </p>
         <p>
           📧
             <a href={`mailto:${tenant.tenantEmail}`} class="hover:text-green-600"
-            >{tenant.tenantEmail}</a
+            >info@guarantee-tours.com</a
           >
         </p>
-          <p>📍 {tenant.tenantAddress}</p>
+          <p>📍 A 16, Obour Buildings, Salah Salem St., Heliopolis, Cairo, Egypt.</p>
       </div>
     </div>
 
@@ -124,7 +132,7 @@ const { title = tenant.tenantName } = Astro.props;
     <div
       class="border-t border-gray-100 dark:border-white/10 py-6 text-center text-xs text-gray-500 dark:text-gray-500"
     >
-      &copy; { new Date().getFullYear() } Gulf Elite Chemicals. All rights
+      &copy; { new Date().getFullYear() } Guarantee Tours. All rights
       reserved.
     </div>
   </footer>
