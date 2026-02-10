@@ -1,0 +1,80 @@
+---
+import { Motion } from "motion-v";
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/PageHeader.astro'
+import ProjectGridCard from "./ProjectGridCard.vue";
+
+const projects = [
+  {
+    title: "Shaybah Dunes Stabilizationss",
+    description:
+      "Stabilized colossal sand dunes in the Empty Quarter for Aramco upstream operations — one of the world’s harshest desert zones.",
+    location: "Shaybah, Aramco Oil Field",
+    category: "Sand Dune Stabilization",
+    src: "http://127.0.0.1:54321/storage/v1/object/public/gulf/SAND-DUNES.webp",
+  },
+  {
+    title: "Berri Islands Pipeline",
+    description:
+      "Delivered berm stabilization services across Janah and Abu Ali Islands as part of the Berri LTA-43 pipeline infrastructure.",
+    location: "Abu Ali & Janah Islands",
+    category: "Pipeline Berm",
+    src: "http://127.0.0.1:54321/storage/v1/object/public/gulf/red-sea.webp",
+  },
+  {
+    title: "Jafurah Pipeline Berm",
+    description:
+      "Engineered berm stabilization for the Jafurah Export Pipeline (PKG#5), enabling durable support across sensitive desert terrain.",
+    location: "Jafurah Basin",
+    category: "Pipeline Berm",
+    src: "http://127.0.0.1:54321/storage/v1/object/public/gulf/aramco-1.webp",
+  },
+  {
+    title: "Slope Protection for Towers",
+    description:
+      "Protected electrical infrastructure by stabilizing slope surfaces and controlling erosion using our eco-safe polymer blends.",
+    location: "Saudi Arabia – Transmission Zone",
+    category: "Slope Protection",
+    src: "http://127.0.0.1:54321/storage/v1/object/public/gulf/electric.webp",
+  },
+];
+---
+<BaseLayout>
+<PageHeader
+  title="Our Projects"
+  image="http://127.0.0.1:54321/storage/v1/object/public/gulf//beautiful-view-tranquil-desert-clear-sky-captured-morocco%20(1).webp"
+  breadcrumbs={[
+    { label: "Home", href: "/" },
+    { label: "Projects" }
+  ]}
+/>
+<section class="bg-white py-24 text-gray-900">
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Title + Description -->
+    <div class="text-center mb-16">
+      <Motion
+        client:only="vue"
+        initial={{ opacity: 0, y: 40 }}
+        while-in-view={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+      >
+        <h2 class="text-4xl font-bold mb-4">Featured Trips Across Egypt</h2>
+        <p class="max-w-2xl mx-auto text-gray-600">
+Browse our carefully selected trips designed to showcase the best of Egypt — from ancient wonders and cultural landmarks to seaside escapes and desert adventures. Each trip is professionally organized to give you a smooth, memorable, and enriching travel experience.
+        </p>
+      </Motion>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {projects.map((project, index) => (
+        <ProjectGridCard
+          client:only="vue"
+          {...project}
+          index={index}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+</BaseLayout>

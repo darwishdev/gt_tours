@@ -1,0 +1,208 @@
+---
+import { Motion } from "motion-v";
+
+import { CardContainer, CardBody, CardItem } from "@/components/ui/card-3d";
+
+
+const services = [
+  {
+    slug: "cairo",
+    title: "Cairo",
+    description:
+      "Experience the heart of Egypt in Cairo — home to the Pyramids of Giza, the Egyptian Museum, historic mosques, and vibrant local markets blending ancient history with modern city life.",
+    image: "/cairo.jpg",
+    video: "https://www.youtube.com/embed/kK4x7Lrx8fA", // example city video
+    gallery: [
+      "/cairo1.jpg",
+      "/cairo2.jpg",
+      "/cairo3.jpg",
+      "/cairo4.jpg"
+    ],
+    content: `
+      <h2>Discover Cairo</h2>
+      <p>Cairo is a city where ancient history meets modern life. Visit the Pyramids, explore the Egyptian Museum, stroll through Khan El Khalili bazaar, and enjoy authentic Egyptian cuisine.</p>
+      <blockquote>“Cairo is a city that never sleeps, where every street tells a story.”</blockquote>
+    `,
+  },
+  {
+    slug: "sinai",
+    title: "Sinai",
+    description:
+      "Discover the natural and spiritual beauty of Sinai, from the sacred Mount Sinai and St. Catherine’s Monastery to stunning beaches and world-class diving spots.",
+    image: "/sinai.jpg",
+    video: "https://www.youtube.com/embed/X1qD2G3Hf8M",
+    gallery: [
+      "/sinai1.jpg",
+      "/sinai2.jpg",
+      "/sinai3.jpg",
+      "/sinai4.jpg"
+    ],
+    content: `
+      <h2>Explore Sinai</h2>
+      <p>Sinai offers breathtaking landscapes, from desert mountains to the Red Sea coast. Hike Mount Sinai, dive in Dahab, or unwind in Sharm El-Sheikh's resorts.</p>
+      <blockquote>“Sinai is where adventure meets tranquility.”</blockquote>
+    `,
+  },
+  {
+    slug: "marsa-allam",
+    title: "Marsa Allam",
+    description:
+      "Relax in Marsa Allam, a Red Sea gem known for its crystal-clear waters, coral reefs, and peaceful resorts — perfect for diving, snorkeling, and nature lovers.",
+    image: "/marsa_alam.jpg",
+    video: "https://www.youtube.com/embed/2kP9Vj3hS2c",
+    gallery: [
+      "/marsa1.jpg",
+      "/marsa2.jpg",
+      "/marsa3.jpg",
+      "/marsa4.jpg"
+    ],
+    content: `
+      <h2>Enjoy Marsa Allam</h2>
+      <p>Marsa Allam is a paradise for water lovers. Explore pristine coral reefs, snorkel among exotic fish, or relax at luxury seaside resorts along the Red Sea coast.</p>
+      <blockquote>“A peaceful escape where the sea meets the sun.”</blockquote>
+    `,
+  },
+  {
+    slug: "hurghada",
+    title: "Hurghada",
+    description:
+      "Enjoy Hurghada’s lively coastal atmosphere with beautiful beaches, marine adventures, desert safaris, and a wide range of entertainment and resort experiences.",
+    image: "/hurghada.jpg",
+    video: "https://www.youtube.com/embed/5y8J9T8kR1I",
+    gallery: [
+      "/hurghada1.jpg",
+      "/hurghada2.jpg",
+      "/hurghada3.jpg",
+      "/hurghada4.jpg"
+    ],
+    content: `
+      <h2>Vibrant Hurghada</h2>
+      <p>Hurghada is famous for its lively nightlife, diving spots, and desert excursions. Enjoy boat trips, water sports, and local cuisine along the Red Sea coast.</p>
+      <blockquote>“Hurghada offers fun for adventure seekers and families alike.”</blockquote>
+    `,
+  },
+  {
+    slug: "luxor",
+    title: "Luxor",
+    description:
+      "Walk through ancient history in Luxor — the world’s greatest open-air museum — featuring Karnak Temple, Valley of the Kings, and unforgettable Nile views.",
+    image: "/luxor.jpg",
+    video: "https://www.youtube.com/embed/3vP5w2yFf9g",
+    gallery: [
+      "/luxor1.jpg",
+      "/luxor2.jpg",
+      "/luxor3.jpg",
+      "/luxor4.jpg"
+    ],
+    content: `
+      <h2>Historical Luxor</h2>
+      <p>Luxor is a treasure trove of ancient Egyptian history. Visit the Valley of the Kings, Luxor and Karnak Temples, and enjoy a scenic Nile cruise.</p>
+      <blockquote>“Luxor is where history comes alive.”</blockquote>
+    `,
+  },
+  {
+    slug: "aswan",
+    title: "Aswan",
+    description:
+      "Explore the calm and scenic city of Aswan with its Nile islands, Philae Temple, Nubian culture, and relaxing river cruises in southern Egypt.",
+    image: "/aswan.jpg",
+    video: "https://www.youtube.com/embed/6nXf8t6O7vA",
+    gallery: [
+      "/aswan1.jpg",
+      "/aswan2.jpg",
+      "/aswan3.jpg",
+      "/aswan4.jpg"
+    ],
+    content: `
+      <h2>Relaxing Aswan</h2>
+      <p>Aswan offers serenity along the Nile. Visit Philae Temple, cruise the Nile islands, and immerse yourself in Nubian culture for a peaceful getaway.</p>
+      <blockquote>“Aswan is the perfect place to unwind and explore history at the same time.”</blockquote>
+    `,
+  }
+];
+---
+
+<section class="py-20 darker text-gray-800">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <!-- Section Title -->
+    <Motion client:only="vue"
+      as="div"
+      :initial="{ opacity: 0, y: 30 }"
+      :while-in-view="{ opacity: 1, y: 0 }"
+      :transition="{ duration: 0.6, ease: 'easeInOut' }"
+      class="mb-12"
+    >
+      <h2 class="text-4xl font-bold mb-4">Explore Egypt’s Top Destinations</h2>
+      <p class="max-w-2xl mx-auto text-gray-600">
+          Discover the most iconic cities across Egypt, each offering a unique blend of history, culture, and natural beauty. From ancient temples and historic streets to coastal escapes and desert adventures, choose your next destination and let us craft the perfect tour experience for you.
+      </p>
+    </Motion>
+
+    <!-- Grid of Cards -->
+<Motion client:only="vue"
+          as="div"
+        client:only="vue"
+          :initial="{ opacity: 0, y: 50 }"
+          :while-in-view="{ opacity: 1, y: 0 }"
+class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-14"
+          :transition="{ delay: 0.1 * index, duration: 0.6, ease: 'easeInOut' }"
+        >
+
+      {services.map((service, index) => (
+      <a href={`/service/${service.slug}`}>
+                  <CardContainer           :key={index} client:only="vue"> 
+            <CardBody
+              class="group/card relative rounded-xl border border-black/10 bg-white p-6 dark:border-white/20 dark:bg-black dark:hover:shadow-2xl dark:hover:shadow-emerald-500/10"
+            >
+              <CardItem
+                :translate-z="50"
+                class="text-xl font-bold text-neutral-800 dark:text-white"
+              >
+                {service.title}
+              </CardItem>
+
+              <CardItem
+                as="p"
+                :translate-z="60"
+                class="mt-2 text-sm text-neutral-500 dark:text-neutral-300"
+              >
+                {service.description}
+              </CardItem>
+
+              {service.image && (
+                <CardItem
+                  :translate-z="100"
+                  class="mt-4 w-full"
+                >
+                  <img
+                    src={service.image}
+                    class="h-48 w-full rounded-xl object-cover group-hover/card:shadow-xl"
+                    alt="Service image"
+                  />
+                </CardItem>
+              )}
+
+              <div class="mt-8 flex items-center justify-between">
+                <CardItem
+                  :translate-z="20"
+                  as="span"
+                  class="rounded-xl px-4 py-2 text-xs font-normal dark:text-white"
+                >
+                  Gulf Elite
+                </CardItem>
+                <CardItem
+                  :translate-z="20"
+                  as="button"
+                  class="rounded-xl bg-black px-4 py-2 text-xs font-bold text-white dark:bg-white dark:text-black"
+                >
+                  Learn More
+                </CardItem>
+              </div>
+            </CardBody>
+          </CardContainer>
+</a>
+      ))}
+
+        </Motion>
+  </div>
+</section>

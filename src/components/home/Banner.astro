@@ -1,0 +1,130 @@
+
+---
+const {
+  backgroundImage = "banner.jpg",
+  tenant,
+} = Astro.props;
+import { Motion } from "motion-v";
+import {Icon} from '@iconify/vue'
+import { ShimmerButton } from '../ui/shimmer-button/index.ts'; 
+---
+
+<section
+  class="relative h-screen w-full bg-cover bg-center text-white flex items-center"
+  style={`background-image: url('${backgroundImage}')`}
+>
+  <div class="absolute inset-0 bg-black/30"></div>
+
+  <Motion
+client:only="vue"
+    as="div"
+    initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
+    while-in-view={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+    transition={{ delay: 0.3, duration: 0.8, ease: 'easeInOut' }}
+    class="relative z-10 max-w-7xl mx-auto px-6 flex flex-col gap-6"
+  >
+    <h1 class="text-5xl sm:text-6xl font-bold leading-tight">
+      Discover Egypt <br />
+      <span class="text-white">with Confidence </span>
+    </h1>
+
+    <p class="max-w-xl text-lg text-white/90">
+Explore the timeless beauty of Egypt with Guarantee Tours. your trusted partner for unforgettable journeys across ancient landmarks and vibrant destinations. From the Pyramids of Giza to Luxor and the Red Sea, we provide expertly planned tours, professional guides, and smooth travel experiences focused on comfort and discovery.
+    </p>
+
+    <div class="flex gap-4 mt-4">
+      <Motion
+client:only="vue"
+        initial={{ opacity: 0, y: 20 }}
+        while-in-view={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 0.6, ease: 'easeOut' }}
+      >
+        <ShimmerButton
+          class="bg-transparent shadow-2xl"
+          background="rgba(255,255,255,.8)"
+          shimmerColor="rgba(0,0,0,.2)"
+          shimmer-size="1px"
+        >
+          <span class="text-black text-sm lg:text-base font-medium flex items-center gap-2">
+            🤝 Get In Touch
+          </span>
+        </ShimmerButton>
+      </Motion>
+
+      <Motion
+client:only="vue"
+        initial={{ opacity: 0, y: 20 }}
+        while-in-view={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.7, duration: 0.6, ease: 'easeOut' }}
+      >
+        <ShimmerButton
+          background="rgba(255,255,255,.1)"
+          shimmerColor="rgba(255,255,255,.2)"
+          shimmer-size="1px"
+        >
+          <span class="text-white text-sm lg:text-base font-medium flex items-center gap-2">
+            📰 Read Blog
+          </span>
+        </ShimmerButton>
+      </Motion>
+    </div>
+  </Motion>
+
+  <!-- Highlights -->
+<Motion
+  client:only="vue"
+  as="div"
+  initial={{ opacity: 0, y: 40 }}
+  while-in-view={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, ease: 'easeOut' }}
+  class="absolute bottom-0 right-0 mt-10 backdrop-blur-lg h-32 w-8/10 bg-white/30 text-black hidden md:grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4 p-4"
+>
+      <div class="flex items-center gap-2">
+      <span class="text-xl">🏜️</span>
+      <div>
+        <p class="font-semibold">Desert-Proven</p>
+        <p class="text-sm">Tested in extreme environments</p>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <span class="text-xl">♻️</span>
+      <div>
+        <p class="font-semibold">Eco-Friendly</p>
+        <p class="text-sm">Biodegradable solutions</p>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <span class="text-xl">🛣️</span>
+      <div>
+
+        <p class="font-semibold">Road Protection</p>
+        <p class="text-sm">Prevents sand encroachment</p>
+      </div>
+    </div>
+
+    <div class="flex flex-col">
+      <p class="font-bold">Trusted by</p>
+      <p class="text-sm">Aramco, Ministry of Transport</p>
+      <p class="text-sm">Saudi Railways & more</p>
+    </div>
+</Motion>
+  <!-- Scroll Prompt -->
+  <div class="absolute bottom-1/2 w-full flex justify-between text-white/70 text-sm">
+    <span class=" rotate-90">
+      Scroll down to learn more
+    </span>
+    <span class=" rotate-90">
+    Scroll down to learn more
+    </span>
+  </div>
+  <div class="absolute left-12  origin-left bottom-1/2 rotate-90 text-white/70 text-sm">
+  </div>
+
+  <div class="icons absolute left-14 bottom-12 flex flex-col gap-8 text-white/70 text-3xl">
+      <Icon client:only icon="mdi:facebook" />
+      <Icon client:only icon="mdi:whatsapp" />
+      <Icon client:only icon="mdi:linkedin" />
+    </div>
+</section>

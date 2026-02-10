@@ -1,0 +1,159 @@
+---
+import HomeProjects from '@/components/home/Projects.vue'
+import {Icon} from '@iconify/vue'
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import HomePartners from '@/components/home/Partners.astro';
+import { Motion } from 'motion-v';
+const certificates = [
+  { title: "ISO 9001", src: "http://127.0.0.1:54321/storage/v1/object/public/gulf/cert_iso_1.png" },
+  { title: "ISO 9001", src: "http://127.0.0.1:54321/storage/v1/object/public/gulf/cert_iso_2.png" },
+  { title: "ISO 14001", src: "http://127.0.0.1:54321/storage/v1/object/public/gulf/cert_iso_3.png" },
+  { title: "Red Sea Project", src: "http://127.0.0.1:54321/storage/v1/object/public/gulf/red_sea_cert.png" },
+  { title: "NEOM Approved", src: "http://127.0.0.1:54321/storage/v1/object/public/gulf/neom_cert.png" },
+  { title: "Aramco Certified", src: "http://127.0.0.1:54321/storage/v1/object/public/gulf/aramco_cert.png" },
+];
+---
+
+<BaseLayout>
+  <PageHeader
+    title="About Us"
+    image="http://127.0.0.1:54321/storage/v1/object/public/gulf//beautiful-view-tranquil-desert-clear-sky-captured-morocco%20(1).webp"
+    breadcrumbs={[
+      { label: "Home", href: "/" },
+      { label: "About Us" }
+    ]}
+  />
+
+  <section class="bg-white dark:bg-black py-24 text-gray-800 dark:text-gray-100">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <!-- Image with animation -->
+      <Motion
+        client:only="vue"
+        :initial="{ opacity: 0, x: -50 }"
+        :while-in-view="{ opacity: 1, x: 0 }"
+        :transition="{ duration: 0.8, ease: 'easeOut' }"
+        class="overflow-hidden rounded-2xl shadow-xl"
+      >
+        <img
+          src="http://127.0.0.1:54321/storage/v1/object/public/gulf//about_cover.webp"
+          alt="Gulf Elite Desert Project"
+          class="w-full h-auto object-cover rounded-2xl"
+        />
+      </Motion>
+
+      <!-- Text content with animation -->
+      <Motion
+        client:only="vue"
+        :initial="{ opacity: 0, y: 40 }"
+        :while-in-view="{ opacity: 1, y: 0 }"
+        :transition="{ delay: 0.3, duration: 0.8, ease: 'easeOut' }"
+        class="space-y-6"
+      >
+        <h2 class="text-3xl font-bold">Empowering Desert Infrastructure</h2>
+        <p>
+          Gulf Elite Chemicals is pioneering sustainable solutions for desert environments. 
+          With cutting-edge chemical formulations and deep regional expertise, 
+          we help shape durable infrastructure where sand once reigned.
+        </p>
+        <p>
+          We partner with national agencies, energy companies, and construction leaders 
+          to stabilize landscapes, protect investments, and ensure longevity of roads, slopes, 
+          and industrial foundations.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-600 dark:text-gray-300 pt-4">
+          <div>
+            <strong class="block font-semibold text-gray-900 dark:text-white mb-1">📍 Head Office</strong>
+            King Abdullah Road, Riyadh, Saudi Arabia
+          </div>
+          <div>
+            <strong class="block font-semibold text-gray-900 dark:text-white mb-1">📞 Contact</strong>
+            +966 59 6888 111 — info@gulfelite.sa
+          </div>
+        </div>
+      </Motion>
+    </div>
+  </section>
+
+  <HomeProjects  title="Our Certifications"
+  description="These certificates prove Gulf Elite's compliance with national and international standards."
+    items={certificates} client:only="vue"/>
+
+<section class="bg-gray-50 dark:bg-neutral-900 py-24">
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Section Heading -->
+    <Motion
+      client:only="vue"
+      :initial="{ opacity: 0, y: 40 }"
+      :while-in-view="{ opacity: 1, y: 0 }"
+      :transition="{ duration: 0.6, ease: 'easeOut' }"
+      class="text-center mb-16"
+    >
+      <h2 class="text-4xl font-bold text-gray-900 dark:text-white">Meet Our Leadership</h2>
+      <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-300 mt-2">
+        Behind every project is a team of dedicated leaders shaping Gulf Elite’s vision and impact.
+      </p>
+    </Motion>
+
+    <!-- Grid of Team Members -->
+    <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-10">
+ <Motion
+        client:only="vue"
+        :initial="{ opacity: 0, y: 30 }"
+        :while-in-view="{ opacity: 1, y: 0 }"
+        :transition="{ delay: 0.2, duration: 0.6, ease: 'easeOut' }"
+        class="bg-white dark:bg-neutral-800 p-6 rounded-2xl shadow-xl text-center"
+      >
+        <img
+          src="http://127.0.0.1:54321/storage/v1/object/public/gulf//eng_aziz_amri.webp"
+          alt="Aziz Amri"
+          class="mx-auto mb-4 h-40 w-40 rounded-full object-cover shadow-md"
+        />
+        <div class="text-xl font-semibold text-gray-800 dark:text-white">Aziz Amri</div>
+        <p class="text-sm text-green-600 mt-1 mb-4">General Manager</p>
+        <p class="text-sm text-gray-600 dark:text-gray-300 mb-6">
+          With extensive experience in industrial operations and desert infrastructure, Aziz leads Gulf Elite’s strategy and execution with precision and passion.
+        </p>
+        <a
+          href="https://sa.linkedin.com/in/aziz-amri-bab38095"
+          target="_blank"
+          class="inline-flex items-center gap-2 text-sm text-blue-600 hover:underline"
+        >
+            <Icon icon="mdi:linkedin" client:only class="text-lg" />
+          View LinkedIn
+        </a>
+      </Motion>
+
+      <!-- Business Development Manager -->
+      <Motion
+        client:only="vue"
+        :initial="{ opacity: 0, y: 30 }"
+        :while-in-view="{ opacity: 1, y: 0 }"
+        :transition="{ delay: 0.4, duration: 0.6, ease: 'easeOut' }"
+        class="bg-white dark:bg-neutral-800 p-6 rounded-2xl shadow-xl text-center"
+      >
+        <img
+          src="http://127.0.0.1:54321/storage/v1/object/public/gulf//dr_hamada.webp"
+          alt="Dr. Hamada Ghaith"
+          class="mx-auto mb-4 h-40 w-40 rounded-full object-cover shadow-md"
+        />
+        <div class="text-xl font-semibold text-gray-800 dark:text-white">Dr. Hamada Ghaith</div>
+        <p class="text-sm text-green-600 mt-1 mb-4">Business Development Manager</p>
+        <p class="text-sm text-gray-600 dark:text-gray-300 mb-6">
+          A respected figure in chemical engineering and environmental solutions, Dr. Hamada drives Gulf Elite’s business growth and strategic partnerships.
+        </p>
+        <a
+          href="https://sa.linkedin.com/in/dr-hamada-ghaith-bab3575b"
+          target="_blank"
+          class="inline-flex items-center gap-2 text-sm text-blue-600 hover:underline"
+        >
+          <Icon icon="mdi:linkedin" client:only class="text-lg" />
+          View LinkedIn
+        </a>
+      </Motion>
+    </div>
+  </div>
+</section>
+  <HomePartners />
+</BaseLayout>

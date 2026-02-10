@@ -1,0 +1,47 @@
+
+---
+import { Motion } from 'motion-v';
+
+const {
+  title = "Page Title",
+  image = "https://via.placeholder.com/1600x600?text=Header+Image",
+  breadcrumbs = [{ label: "Home", href: "/" }],
+} = Astro.props;
+---
+
+<section
+  class="relative h-[60vh] w-full bg-cover bg-center flex items-center justify-center text-white"
+  style={`background-image: url('${image}')`}
+>
+  <!-- Dark overlay -->
+  <div class="absolute inset-0 bg-white/60 backdrop-blur-sm"></div>
+
+  <!-- Animated Content -->
+  <Motion
+    client:only="vue"
+    as="div"
+    initial={{ opacity: 0, y: 40 }}
+    while-in-view={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, ease: 'easeOut' }}
+    class="relative z-10 text-center px-4"
+  >
+    <!-- Breadcrumbs -->
+    <nav class="mb-4 text-sm text-white/70 flex justify-center gap-2 flex-wrap">
+      {breadcrumbs.map((crumb, i) => (
+        <span class="flex items-center gap-1" key={i}>
+          {i !== 0 && <span class="mx-1">/</span>}
+          {crumb.href ? (
+            <a href={crumb.href} class="hover:underline">
+              {crumb.label}
+            </a>
+          ) : (
+            <span>{crumb.label}</span>
+          )}
+        </span>
+      ))}
+    </nav>
+
+    <!-- Page Title -->
+    <h1 class="text-4xl sm:text-5xl font-bold drop-shadow-lg">{title}</h1>
+  </Motion>
+</section>

@@ -1,0 +1,132 @@
+---
+// import {apiClient} from '../pkg/api/ApiClient.ts'
+// const { tenant } = await apiClient.tenantFind({tenantId : 2});
+const tenant = {}
+
+const { title = tenant.tenantName } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{title}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+  <body class="text-black dark:bg-black dark:text-white font-sans min-h-screen">
+    <!-- Glass NavBar -->
+    <header class="fixed top-0 z-50 w-full backdrop-blur-lg   border-b border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+        <a href="/">
+        <img
+          src="/gt_logo.webp"
+          class="app-logo"
+          alt="Gulf Elite Logo"
+        />
+
+        </a>
+  
+
+        <nav class="flex gap-4 text-sm font-medium">
+          <a href="/" class="hover:underline">Home</a>
+          <a href="/about" class="hover:underline">About</a>
+          <a href="/service" class="hover:underline">Trips</a>
+          <a href="/blog" class="hover:underline">Blog</a>
+          <a href="/contact" class="hover:underline">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <main class="mx-auto">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+      <footer
+    class="bg-white border-t border-gray-200 text-gray-800 dark:bg-black dark:border-white/10 dark:text-white"
+  >
+    <div
+      class="max-w-7xl mx-auto px-6 py-12 grid gap-10 sm:grid-cols-2 md:grid-cols-4"
+    >
+      <!-- Logo & Description -->
+      <div class="flex flex-col gap-4">
+        <a href="/">
+        <img
+          src="http://127.0.0.1:54321/storage/v1/object/public/images//logo.png"
+          alt="Gulf Elite Logo"
+        />
+          </a>
+        <p class="text-sm text-gray-600 dark:text-gray-400">
+            Gulf Elite Chemicals is a Saudi-based environmental technology company specializing in chemical solutions for sand and soil stabilization. With proprietary 
+          </p>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <h4 class="text-sm font-semibold uppercase mb-4 tracking-wide">
+          Company
+        </h4>
+        <ul
+          class="flex flex-col gap-2 text-sm text-gray-600 dark:text-gray-400"
+        >
+            <li><a href="/about" class="hover:text-green-600">About Us</a></li>
+            <li><a href="/projects" class="hover:text-green-600">Projects</a></li>
+          <li>
+              <a href="/services" class="hover:text-green-600">Services</a>
+          </li>
+            <li><a href="/blog" class="hover:text-green-600">Blog</a></li>
+        </ul>
+      </div>
+
+      <!-- Support -->
+      <div>
+        <h4 class="text-sm font-semibold uppercase mb-4 tracking-wide">
+          Support
+        </h4>
+        <ul
+          class="flex flex-col gap-2 text-sm text-gray-600 dark:text-gray-400"
+        >
+            <li><a href="/contact" class="hover:text-green-600">Contact</a></li>
+          <li><a href="#faq" class="hover:text-green-600">FAQs</a></li>
+          <li>
+            <a href="#safety" class="hover:text-green-600">Safety Docs</a>
+          </li>
+          <li>
+            <a href="#downloads" class="hover:text-green-600">Downloads</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="flex flex-col gap-3 text-sm text-gray-600 dark:text-gray-400">
+        <h4 class="text-sm font-semibold uppercase mb-4 tracking-wide">
+          Contact
+        </h4>
+        <p>
+          📞
+            <a href={`tel:${tenant.tenantPhone}`} class="hover:text-green-600"
+            >{tenant.tenantPhone}</a
+          >
+        </p>
+        <p>
+          📧
+            <a href={`mailto:${tenant.tenantEmail}`} class="hover:text-green-600"
+            >{tenant.tenantEmail}</a
+          >
+        </p>
+          <p>📍 {tenant.tenantAddress}</p>
+      </div>
+    </div>
+
+    <!-- Bottom -->
+    <div
+      class="border-t border-gray-100 dark:border-white/10 py-6 text-center text-xs text-gray-500 dark:text-gray-500"
+    >
+      &copy; { new Date().getFullYear() } Gulf Elite Chemicals. All rights
+      reserved.
+    </div>
+  </footer>
+  </body>
+</html>

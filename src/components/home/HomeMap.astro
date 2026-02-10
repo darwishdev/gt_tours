@@ -1,0 +1,69 @@
+---
+import { Motion } from "motion-v";
+import { WorldMap } from "../ui/world-map/index";
+
+// Major Saudi cities
+const dots = [
+  {
+    start: { lat: 24.7136, lng: 46.6753 }, // Riyadh
+    end: { lat: 21.3891, lng: 39.8579 },   // Jeddah
+  },
+  {
+    start: { lat: 21.3891, lng: 39.8579 }, // Jeddah
+    end: { lat: 24.5247, lng: 39.5692 },   // Medina
+  },
+  {
+    start: { lat: 24.5247, lng: 39.5692 }, // Medina
+    end: { lat: 26.4207, lng: 50.0888 },   // Dammam
+  },
+  {
+    start: { lat: 26.4207, lng: 50.0888 }, // Dammam
+    end: { lat: 27.5114, lng: 41.7208 },   // Hail
+  },
+  {
+    start: { lat: 27.5114, lng: 41.7208 }, // Hail
+    end: { lat: 18.2034, lng: 42.5053 },   // Abha
+  },
+];
+---
+
+<section class="w-full darker py-20">
+  <!-- Tagline & KPI -->
+  <div class="max-w-7xl mx-auto px-6 mb-12 text-center">
+    <Motion
+      client:only="vue"
+      as="div"
+      initial={{ opacity: 0, y: 20 }}
+      while-in-view={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: 'easeInOut' }}
+    >
+      <p class="text-sm uppercase tracking-widest text-gray-500">
+          Proven Travel Coverage Across Egypt
+      </p>
+      <h2 class="text-4xl font-bold text-green-800">
+        +500 Successful Trips Delivered
+      </h2>
+      <p class="mt-4 text-md text-gray-600 max-w-2xl mx-auto">
+      Guarantee Tours has organized trips across Egypt’s most iconic destinations<br/>
+      from Cairo and Luxor to Aswan, Sinai, and the Red Sea coast. Our growing network of routes and highlighted destinations on the map reflects real journeys completed and memorable experiences delivered to travelers from around the world.
+      </p>
+    </Motion>
+  </div>
+
+  <!-- Full-Width Image -->
+  <Motion
+    client:only="vue"
+    as="div"
+    initial={{ opacity: 0, scale: 0.98 }}
+    while-in-view={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.7, ease: 'easeInOut' }}
+    class="relative w-full"
+  >
+     <WorldMap
+        client:only="vue"
+        dots={dots}
+        map-color={'#00000040'}
+        map-bg-color={'yellow'}
+      />
+     </Motion>
+</section>

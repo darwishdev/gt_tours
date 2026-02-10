@@ -1,0 +1,131 @@
+---
+import {AppleCard , AppleCarouselItem, AppleCardCarousel} from "../ui/apple-card-carousel";
+import { Motion } from "motion-v";
+
+const projects2 = [
+  {
+    title: "Shaybah Dunes Stabilization",
+    description:
+      "Stabilized colossal sand dunes in the Empty Quarter for Aramco upstream operations — one of the world’s harshest desert zones.",
+    location: "Shaybah, Aramco Oil Field",
+    category: "Sand Dune Stabilization",
+    src: "http://127.0.0.1:54321/storage/v1/object/public/gulf/SAND-DUNES.webp",
+  },
+  {
+    title: "Berri Islands Pipeline",
+    description:
+      "Delivered berm stabilization services across Janah and Abu Ali Islands as part of the Berri LTA-43 pipeline infrastructure.",
+    location: "Abu Ali & Janah Islands",
+    category: "Pipeline Berm",
+    src: "http://127.0.0.1:54321/storage/v1/object/public/gulf/red-sea.webp",
+  },
+  {
+    title: "Jafurah Pipeline Berm",
+    description:
+      "Engineered berm stabilization for the Jafurah Export Pipeline (PKG#5), enabling durable support across sensitive desert terrain.",
+    location: "Jafurah Basin",
+    category: "Pipeline Berm",
+    src: "http://127.0.0.1:54321/storage/v1/object/public/gulf/aramco-1.webp",
+  },
+  {
+    title: "Slope Protection for Towers",
+    description:
+      "Protected electrical infrastructure by stabilizing slope surfaces and controlling erosion using our eco-safe polymer blends.",
+    location: "Saudi Arabia – Transmission Zone",
+    category: "Slope Protection",
+    src: "http://127.0.0.1:54321/storage/v1/object/public/gulf/electric.webp",
+  },
+  {
+    title: "Shaybah Dunes Stabilization",
+    description:
+      "Stabilized colossal sand dunes in the Empty Quarter for Aramco upstream operations — one of the world’s harshest desert zones.",
+    location: "Shaybah, Aramco Oil Field",
+    category: "Sand Dune Stabilization",
+    src: "http://127.0.0.1:54321/storage/v1/object/public/gulf/SAND-DUNES.webp",
+  },
+  {
+    title: "Berri Islands Pipeline",
+    description:
+      "Delivered berm stabilization services across Janah and Abu Ali Islands as part of the Berri LTA-43 pipeline infrastructure.",
+    location: "Abu Ali & Janah Islands",
+    category: "Pipeline Berm",
+    src: "http://127.0.0.1:54321/storage/v1/object/public/gulf/red-sea.webp",
+  },
+  {
+    title: "Jafurah Pipeline Berm",
+    description:
+      "Engineered berm stabilization for the Jafurah Export Pipeline (PKG#5), enabling durable support across sensitive desert terrain.",
+    location: "Jafurah Basin",
+    category: "Pipeline Berm",
+    src: "http://127.0.0.1:54321/storage/v1/object/public/gulf/aramco-1.webp",
+  },
+  {
+    title: "Slope Protection for Towers",
+    description:
+      "Protected electrical infrastructure by stabilizing slope surfaces and controlling erosion using our eco-safe polymer blends.",
+    location: "Saudi Arabia – Transmission Zone",
+    category: "Slope Protection",
+    src: "http://127.0.0.1:54321/storage/v1/object/public/gulf/electric.webp",
+  },
+]
+---
+
+<section class="bg-white py-24 text-gray-900">
+  <div class="max-w-7xl mx-auto px-6 text-center mb-16">
+    <Motion
+      client:only="vue"
+      :initial="{ opacity: 0, y: 40 }"
+      :while-in-view="{ opacity: 1, y: 0 }"
+      :transition="{ duration: 0.6, ease: 'easeOut' }"
+    >
+      <h2 class="text-4xl font-bold mb-4">Featured Trips Across Egypt</h2>
+      <p class="max-w-2xl mx-auto text-gray-600">
+Browse our carefully selected trips designed to showcase the best of Egypt — from ancient wonders and cultural landmarks to seaside escapes and desert adventures. Each trip is professionally organized to give you a smooth, memorable, and enriching travel experience.
+      </p>
+    </Motion>
+  </div>
+
+  <AppleCardCarousel client:only="vue">
+    {
+      projects2.map((card, index) => (
+        <AppleCarouselItem index={index}>
+      <AppleCard card={card} index={index} layout>
+            <Motion
+              client:only="vue"
+              :initial="{ opacity: 0, y: 30 }"
+              :while-in-view="{ opacity: 1, y: 0 }"
+              :transition="{ delay: 0.1 * index, duration: 0.5, ease: 'easeOut' }"
+            >
+              <div
+                class="group relative mb-4 transform rounded-3xl bg-[#F5F5F7] p-8 md:p-14 transition duration-300 hover:-translate-y-2 hover:shadow-2xl dark:bg-neutral-800"
+              >
+                <div class="text-center transition-colors duration-300">
+                  <h3 class="mb-1 text-xl font-bold text-neutral-800 dark:text-white group-hover:text-green-700">
+                    {card.title}
+                  </h3>
+                  <p class="text-xs uppercase tracking-wide text-green-600 mb-4 group-hover:tracking-wider transition-all">
+                    📍 {card.location}
+                  </p>
+                  <p class="text-base text-neutral-600 dark:text-neutral-300 transition duration-300 group-hover:text-neutral-800 dark:group-hover:text-white">
+                    {card.description}
+                  </p>
+                </div>
+
+                <div class="relative mx-auto mt-8 w-full max-w-md overflow-hidden rounded-xl">
+                  <img
+                    src={card.src}
+                    alt={card.title}
+                    class="h-64 w-full rounded-xl object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/30 to-transparent px-4 py-2 text-left text-xs font-medium text-white">
+                    {card.category}
+                  </div>
+                </div>
+              </div>
+            </Motion>
+          </AppleCard>
+        </AppleCarouselItem>
+      ))
+    }
+  </AppleCardCarousel>
+</section>

@@ -1,0 +1,213 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHeader from "@/components/PageHeader.astro";
+import { type APIContext } from "astro";
+
+interface BlogPost {
+  title: string;
+  date: string;
+  author: string;
+  category: string;
+  image: string;
+  description: string;
+  content: string;
+}
+
+// Static blog posts map
+const blogPosts: Record<string, BlogPost> = {
+  "soil-stabilization": {
+    title: "5 Ways Soil Stabilization Saves Infrastructure Costs",
+    date: "2025-06-28",
+    author: "Gulf Elite Team",
+    category: "Stabilization",
+    image: "http://127.0.0.1:54321/storage/v1/object/public/gulf/beautiful-view-tranquil-desert-clear-sky-captured-morocco.webp",
+    description: "Discover how chemical stabilization reduces long-term costs in harsh environments.",
+content: `
+  <article class="prose prose-lg max-w-none dark:prose-invert">
+    <h2>Stabilizing the Foundations of Tomorrow</h2>
+    <p>
+      In the heart of the Arabian desert, infrastructure faces a relentless challenge: sand. Shifting, loose, and unstable — it erodes, buries, and undermines critical projects. <strong>Soil stabilization</strong> is the science that turns this problem into possibility.
+    </p>
+
+    <figure class="my-8">
+      <img 
+      src="/about.png" 
+        alt="Stabilized desert road" 
+        class="rounded-xl shadow-md w-full h-auto"
+      />
+      <figcaption class="text-sm text-center text-gray-500 mt-2">
+        A stabilized desert road using Gulf Elite’s polymer solutions.
+      </figcaption>
+    </figure>
+
+    <h3>What Is Soil Stabilization?</h3>
+    <p>
+      Soil stabilization involves modifying soil properties to improve strength, reduce permeability, and increase durability. Gulf Elite’s Terra-Lock and Sand-Lock polymers create a binding matrix that holds particles in place — even in high-drift zones.
+    </p>
+
+    <blockquote class="border-l-4 border-green-600 pl-4 italic text-gray-600 my-6">
+      “We no longer fear sandstorms. Terra-Lock holds the ground firm even in extreme winds.” — Site Manager, Red Sea Project
+    </blockquote>
+
+    <h3>Where It’s Applied</h3>
+    <ul class="list-disc pl-5">
+      <li>📍 Oil field access roads (e.g., Shaybah, Ghawar)</li>
+      <li>📍 Pipeline berms and trench reinforcements</li>
+      <li>📍 Construction zones near coastal or loose terrain</li>
+      <li>📍 Military logistics bases and solar installations</li>
+    </ul>
+
+    <h3>Case Study: Stabilizing the Aramco Shaybah Road</h3>
+    <p>
+      In Shaybah — a remote oil field in the Empty Quarter — Gulf Elite was tasked with stabilizing access roads that frequently vanished under drifting dunes. Within 10 days, over 12 kilometers of road were bonded with <strong>Sand-Lock</strong>. The results were immediate:
+    </p>
+    <ul class="list-decimal pl-5">
+      <li>95% reduction in sand drift over pavement</li>
+      <li>Zero regrading for 9 months</li>
+      <li>Traffic capacity increased by 50%</li>
+    </ul>
+
+    <figure class="my-8">
+      <img 
+        src="http://127.0.0.1:54321/storage/v1/object/public/gulf//aramco-1.webp" 
+        alt="Gulf Elite at work in Aramco Shaybah" 
+        class="rounded-xl shadow-md w-full h-auto"
+      />
+      <figcaption class="text-sm text-center text-gray-500 mt-2">
+        Field technicians applying Dust-Lock near Aramco’s Shaybah pipeline.
+      </figcaption>
+    </figure>
+
+    <h3>How It Works</h3>
+    <p>
+      Our polymers penetrate deep into the surface layer, bonding with soil particles and forming a resilient crust that withstands erosion. These solutions are <strong>biodegradable</strong>, <strong>non-toxic</strong>, and <strong>certified for environmental safety</strong>.
+    </p>
+
+    <h4 class="mt-6">Watch: How Desert Roads Are Transformed</h4>
+    <div class="aspect-w-16 aspect-h-9 my-4">
+      <iframe 
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+        title="Soil Stabilization Demo"
+        class="rounded-xl w-full h-full"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <blockquote class="border-l-4 border-blue-500 pl-4 text-blue-700 italic my-6">
+      “Gulf Elite's formula gave us stability in soil we previously considered unworkable.” — Ministry of Transportation Engineer
+    </blockquote>
+
+    <h3>The Green Advantage</h3>
+    <p>
+      Beyond performance, our commitment to sustainability sets us apart. Terra-Lock uses water-based carriers, contains zero heavy metals, and breaks down naturally after completing its stabilization lifecycle — no remediation required.
+    </p>
+
+    <h2 class="mt-12">Ready to Reinforce Your Ground?</h2>
+    <p>
+      Whether you're preparing a runway, pipeline, or eco-tourism trail — Gulf Elite has the tools and technology to stabilize with confidence. Speak with our engineers to request a site-specific demo or explore how we’ve helped <a href="/projects" class="text-green-600 underline font-medium">Aramco, Red Sea Global, and NEOM</a> achieve long-term ground durability.
+    </p>
+
+    <div class="mt-10 text-center">
+      <a href="/contact" class="inline-block rounded-lg bg-green-700 px-6 py-3 text-white font-semibold hover:bg-green-800 transition">
+        Talk to a Soil Expert →
+      </a>
+    </div>
+  </article>
+`
+  },
+};
+  
+export async function getStaticPaths() {
+  return Object.keys({
+  "soil-stabilization": {
+    title: "5 Ways Soil Stabilization Saves Infrastructure Costs",
+    date: "2025-06-28",
+    author: "Gulf Elite Team",
+    category: "Stabilization",
+    image: "http://127.0.0.1:54321/storage/v1/object/public/gulf/beautiful-view-tranquil-desert-clear-sky-captured-morocco.webp",
+    description: "Discover how chemical stabilization reduces long-term costs in harsh environments.",
+content: `<h2>Understanding Soil Stabilization</h2>
+  <p>
+    Soil stabilization is more than just a construction buzzword — it’s a critical process that determines the durability, safety, and sustainability of modern infrastructure. In arid environments like the Kingdom of Saudi Arabia, where loose desert sands dominate the landscape, stabilization becomes essential.
+  </p>
+
+  <h3>Why It Matters</h3>
+  <p>
+    Roads, pipelines, and facilities built on unstable soil are at constant risk of collapse, erosion, and costly maintenance. Without proper intervention, even the most robust engineering can fail.
+  </p>
+
+  <ul>
+    <li>🌪️ Wind can cause dune migration, covering roads and equipment.</li>
+    <li>🚧 Loose soil makes excavation and foundation work unpredictable.</li>
+    <li>💸 Infrastructure built on weak soil deteriorates faster, increasing long-term costs.</li>
+  </ul>
+
+  <h3>How Gulf Elite Approaches Stabilization</h3>
+  <p>
+    At Gulf Elite Chemicals, we use a range of eco-friendly, polymer-based solutions like <strong>Terra-Lock</strong> and <strong>Sand-Lock</strong> to transform unstable ground into load-bearing, erosion-resistant terrain.
+  </p>
+
+  <h4>Key Benefits:</h4>
+  <ol>
+    <li><strong>Reduced Maintenance:</strong> Roads last longer with fewer surface failures.</li>
+    <li><strong>Faster Construction:</strong> Ground prep takes days, not weeks.</li>
+    <li><strong>Environmental Safety:</strong> All formulations are water-safe and non-toxic.</li>
+    <li><strong>Cost Savings:</strong> Our clients — including Aramco, Red Sea Global, and NEOM — report measurable ROI within months.</li>
+  </ol>
+
+  <h3>Proven Results in Harsh Conditions</h3>
+  <p>
+    Our solutions have been tested in the Empty Quarter, along desert pipelines, and beneath electrical towers. In each case, we’ve delivered stability and longevity where traditional methods failed.
+  </p>
+
+  <blockquote>
+    “After Gulf Elite stabilized our access roads, we went from monthly regrading to zero maintenance in over a year.” — Project Engineer, Aramco
+  </blockquote>
+
+  <h3>Looking Ahead</h3>
+  <p>
+    As Saudi Arabia embarks on a new wave of giga-projects, soil stabilization will be a cornerstone of infrastructure success. Whether you're building highways, logistics hubs, or remote solar farms — starting with the ground is non-negotiable.
+  </p>
+
+  <h3>Let’s Build on Solid Ground</h3>
+  <p>
+    Curious how Gulf Elite can help stabilize your site? <a href="/contact" class="text-green-600 hover:underline font-semibold">Contact our technical team</a> for a free consultation today.
+  </p>`,
+  },
+}).map((slug) => ({
+    params: { slug },
+    props: { slug },
+  }));
+}
+
+const { slug } = Astro.props;
+const post = blogPosts[slug];
+if (!post) throw new Error(`Post not found for slug: ${slug}`);
+---
+
+<BaseLayout>
+  <PageHeader
+    title={post.title}
+    image={post.image}
+    breadcrumbs={[
+      { label: "Home", href: "/" },
+      { label: "Blog", href: "/blog" },
+      { label: post.title },
+    ]}
+  />
+
+  <section class="bg-white dark:bg-black py-20 text-gray-900 dark:text-white">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="mb-8 text-sm text-gray-500 dark:text-gray-400 flex flex-wrap items-center gap-4">
+        <span>📅 {post.date}</span>
+        <span>✍️ {post.author}</span>
+        <span class="bg-green-100 text-green-800 px-2 py-0.5 rounded text-xs font-semibold dark:bg-green-900 dark:text-green-300">
+          {post.category}
+        </span>
+      </div>
+
+      <article class="prose prose-lg dark:prose-invert max-w-none" set:html={post.content} />
+    </div>
+  </section>
+</BaseLayout>

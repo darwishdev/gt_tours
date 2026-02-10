@@ -1,0 +1,63 @@
+---
+import { Marquee } from "@/components/ui/marquee";
+import { Motion } from "motion-v";
+
+const logos = [
+"/l1.png",
+"/l2.png",
+"/l3.png",
+"/l4.png",
+"/l5.png",
+"/l6.jpg",
+"/l7.png"
+];
+
+const firstRow = logos.slice(0, Math.ceil(logos.length / 2));
+const secondRow = logos.slice(Math.ceil(logos.length / 2));
+---
+
+<section class="bg-white dark:bg-black py-24 text-gray-900 dark:text-white">
+  <div class="max-w-7xl mx-auto px-6 text-center mb-16">
+    <Motion
+      client:only="vue"
+      :initial="{ opacity: 0, y: 40 }"
+      :while-in-view="{ opacity: 1, y: 0 }"
+      :transition="{ duration: 0.6, ease: 'easeOut' }"
+    >
+      <h2 class="text-4xl font-bold mb-4">Trusted by National Leaders</h2>
+      <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
+        Gulf Elite proudly partners with Saudi Arabia’s most visionary entities — from mega projects to ministries.
+      </p>
+    </Motion>
+  </div>
+
+  <div class="relative flex flex-col items-center justify-center overflow-hidden rounded-lg border border-gray-100 dark:border-white/10 bg-background dark:bg-neutral-900 py-12">
+    <!-- First Marquee -->
+    <Marquee pauseOnHover class="[--duration:20s]">
+      {firstRow.map((img, i) => (
+        <img
+          src={img}
+          alt={`Partner ${i + 1}`}
+          class="h-20 w-auto mx-6 object-contain grayscale hover:grayscale-0 transition-all duration-300"
+          loading="lazy"
+        />
+      ))}
+    </Marquee>
+
+    <!-- Second Marquee -->
+    <Marquee reverse pauseOnHover class="[--duration:20s] mt-8">
+      {secondRow.map((img, i) => (
+        <img
+          src={img}
+          alt={`Partner ${i + firstRow.length + 1}`}
+          class="h-20 w-auto mx-6 object-contain grayscale hover:grayscale-0 transition-all duration-300"
+          loading="lazy"
+        />
+      ))}
+    </Marquee>
+
+    <!-- Left and Right Gradients -->
+    <div class="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-white dark:from-black"></div>
+    <div class="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-white dark:from-black"></div>
+  </div>
+</section>

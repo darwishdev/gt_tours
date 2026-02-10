@@ -1,0 +1,18 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HomeServices from '@/components/home/Services.astro'
+import PageHeader from '@/components/PageHeader.astro'
+---
+
+<!doctype html>
+<BaseLayout>
+<PageHeader
+  title="Our Services"
+  image="http://127.0.0.1:54321/storage/v1/object/public/gulf//beautiful-view-tranquil-desert-clear-sky-captured-morocco%20(1).webp"
+  breadcrumbs={[
+    { label: "Home", href: "/" },
+    { label: "Services" }
+  ]}
+/>
+  <HomeServices class="darker" />
+</BaseLayout>

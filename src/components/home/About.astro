@@ -1,0 +1,67 @@
+---
+const {
+image = "/about.png",
+} = Astro.props;
+
+import { Motion } from "motion-v";
+---
+
+<section class="relative bg-white text-gray-900 py-20">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
+    <!-- Text Content -->
+    <Motion
+client:only="vue"
+      as="div"
+      initial={{ opacity: 0, x: -40 }}
+      while-in-view={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.6, ease: 'easeInOut' }}
+      class="flex flex-col gap-6"
+    >
+      <h2 class="text-4xl font-bold text-gray-900 leading-tight">
+        About Guarantee Tours
+      </h2>
+
+      <p class="text-lg text-gray-600">
+Guarantee Tours is a dedicated Egyptian travel company focused on delivering exceptional tour experiences across the country. We combine deep local knowledge with professional service to create journeys that are enriching, smooth, and memorable. Whether you’re seeking history, adventure, relaxation, or culture, our curated tour packages are designed to suit every traveler’s style and schedule
+      </p>
+
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-700">
+        <li class="flex items-center gap-2">
+          <span class="text-green-600 text-lg">✔</span>
+            Expertly designed tours covering all major Egyptian destinations
+        </li>
+        <li class="flex items-center gap-2">
+          <span class="text-green-600 text-lg">✔</span>
+            Licensed, multilingual tour guides with deep historical knowledge
+        </li>
+        <li class="flex items-center gap-2">
+          <span class="text-green-600 text-lg">✔</span>
+          Flexible packages for individuals, families, and groups
+        </li>
+        <li class="flex items-center gap-2">
+          <span class="text-green-600 text-lg">✔</span>
+          Comfortable transportation and trusted hotel partnerships
+        </li>
+      </ul>
+    </Motion>
+
+    <!-- Image -->
+    <Motion
+      as="div"
+client:only="vue"
+      initial={{ opacity: 0, scale: 0.9 }}
+      while-in-view={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.7, ease: 'easeInOut' }}
+      class="relative aspect-video w-full rounded-lg overflow-hidden shadow-xl"
+    >
+      <img
+        src={image}
+        alt="Stabilized desert road"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute bottom-0 bg-black/50 text-white text-xs px-4 py-2">
+        A stabilized access road in a high-drift zone
+      </div>
+    </Motion>
+  </div>
+</section>

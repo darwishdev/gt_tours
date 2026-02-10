@@ -1,0 +1,305 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHeader from "@/components/PageHeader.astro";
+
+// ✅ Static service data
+const services = [
+  {
+    slug: "sand-stabilization",
+    title: "Sand Stabilization (Sand-Lock)",
+    description:
+      "Prevent sand drift and dune migration with Sand-Lock — Gulf Elite’s flagship product engineered for desert infrastructure and pipeline corridors.",
+    image: "http://127.0.0.1:54321/storage/v1/object/public/gulf/sand-lock.webp",
+    video: "https://www.youtube.com/embed/1SRAEhE14YY?si=CoSMVYipVtPKLYzi",
+    gallery: [
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf/sand-lock.webp",
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf//dust-lock.webp",
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf//electric.webp",
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf//electric.webp",
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf//red-sea.webp",
+"http://127.0.0.1:54321/storage/v1/object/public/gulf//road_construction.webp"
+    ],
+    content: `
+      <h2>Why Sand Stabilization Matters</h2>
+      <p>Shifting sands are a critical threat to infrastructure in desert regions. Roads, pipelines, and foundations can be buried or destabilized within weeks without proper sand control.</p>
+      <blockquote>“Without stabilization, infrastructure longevity drops by over 70%.”</blockquote>
+      <p>Sand-Lock binds the top 5–10 cm of surface sand, forming a crust that withstands high wind speeds while remaining water-permeable and eco-safe.</p>
+    `,
+  },
+  {
+    slug: "dust-control",
+    title: "Dust Control",
+    description:
+      "Minimize airborne particulate matter on construction sites, logistics yards, and open landscapes using our advanced dust control systems.",
+    image: "http://127.0.0.1:54321/storage/v1/object/public/gulf/dust-control.webp",
+    video: "https://www.youtube.com/embed/1SRAEhE14YY?si=CoSMVYipVtPKLYzi",
+    gallery: [
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf/sand-lock.webp",
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf//dust-lock.webp",
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf//electric.webp",
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf//electric.webp",
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf//red-sea.webp",
+"http://127.0.0.1:54321/storage/v1/object/public/gulf//road_construction.webp"
+    ] ,
+    content: `
+      <h2>Clean Air on Job Sites</h2>
+      <p>Dust is not just a nuisance — it's a health hazard and an environmental compliance risk.</p>
+      <p>Our dust suppression systems form a microfilm barrier that keeps particles locked down, especially PM10 and PM2.5, with over 80% reduction efficiency.</p>
+      <blockquote>“Our clients report improved visibility and safer working conditions within 24 hours.”</blockquote>
+    `,
+  },
+  {
+    slug: "berm-stabilization",
+    title: "Berm Stabilization",
+    description:
+      "Secure earthen berms and embankments from wind and water erosion using high-adhesion polymer formulations.",
+    image: "http://127.0.0.1:54321/storage/v1/object/public/gulf/terra-lock.webp",
+    video: "https://www.youtube.com/embed/1SRAEhE14YY?si=CoSMVYipVtPKLYzi",
+ gallery: [
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf/sand-lock.webp",
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf//dust-lock.webp",
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf//electric.webp",
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf//electric.webp",
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf//red-sea.webp",
+"http://127.0.0.1:54321/storage/v1/object/public/gulf//road_construction.webp"
+    ] ,
+    content: `
+      <h2>Preserving Engineered Berms</h2>
+      <p>Whether for oil pipelines or rail infrastructure, berms must maintain structural integrity year-round.</p>
+      <p>Our polymer-infused Terra-Lock system adds tensile strength to berm surfaces while enabling natural vegetation growth when needed.</p>
+    `,
+  },
+  {
+    slug: "slope-protection",
+    title: "Slope Protection",
+    description:
+      "Control erosion and slippage on inclined terrain — ideal for transmission towers, road cuttings, and sloped embankments.",
+    image: "http://127.0.0.1:54321/storage/v1/object/public/gulf/electric.webp",
+    video: "https://www.youtube.com/embed/1SRAEhE14YY?si=CoSMVYipVtPKLYzi",
+   gallery: [
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf/sand-lock.webp",
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf//dust-lock.webp",
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf//electric.webp",
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf//electric.webp",
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf//red-sea.webp",
+"http://127.0.0.1:54321/storage/v1/object/public/gulf//road_construction.webp"
+    ] ,
+    content: `
+      <h2>Protecting Sloped Terrain</h2>
+      <p>Slope failures can cause infrastructure collapse and downtime. Gulf Elite offers advanced slope stabilization using geotextile-compatible polymer solutions.</p>
+      <blockquote>“Zero slippage events after 12 months of monitoring.”</blockquote>
+    `,
+  },
+  {
+    slug: "road-construction",
+    title: "Road Construction Stabilization",
+    description:
+      "Enhance subgrade and base layer strength with our soil binders, cutting construction time and reducing material cost.",
+    image: "http://127.0.0.1:54321/storage/v1/object/public/gulf/road.webp",
+    video: "https://www.youtube.com/embed/1SRAEhE14YY?si=CoSMVYipVtPKLYzi",
+   gallery: [
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf/sand-lock.webp",
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf//dust-lock.webp",
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf//electric.webp",
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf//electric.webp",
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf//red-sea.webp",
+"http://127.0.0.1:54321/storage/v1/object/public/gulf//road_construction.webp"
+    ] ,
+    content: `
+      <h2>Optimizing Road Bases</h2>
+      <p>In desert terrains, conventional road construction often fails without proper stabilization. Our systems allow for in-situ stabilization of existing soils.</p>
+      <p>Reduced need for gravel import saves millions in logistics and accelerates delivery.</p>
+    `,
+  },
+  {
+    slug: "road-erosion-control",
+    title: "Road Erosion Control",
+    description:
+      "Prevent water runoff and wind erosion on service roads and access tracks using layered protective coatings.",
+    image: "http://127.0.0.1:54321/storage/v1/object/public/gulf/slope.webp",
+    video: "https://www.youtube.com/embed/1SRAEhE14YY?si=CoSMVYipVtPKLYzi",
+    gallery: [
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf/sand-lock.webp",
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf//dust-lock.webp",
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf//electric.webp",
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf//electric.webp",
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf//red-sea.webp",
+"http://127.0.0.1:54321/storage/v1/object/public/gulf//road_construction.webp"
+    ] ,
+    content: `
+      <h2>Keeping Roads Intact</h2>
+      <p>Service roads are often neglected until it’s too late. Erosion causes washouts and vehicle hazards. Our erosion control solutions extend road lifespan by forming hydrophobic barriers across vulnerable surfaces.</p>
+    `,
+  },
+];
+// ✅ Read the current slug from the URL
+const { slug } = Astro.params;
+
+// ✅ Find the service data
+const service = services.find((s) => s.slug === slug);
+
+// ✅ Throw 404 if not found
+if (!service) {
+  throw new Error(`Service not found for slug: ${slug}`);
+}
+export async function getStaticPaths() {
+  return  [
+  {
+    slug: "sand-stabilization",
+    title: "Sand Stabilization (Sand-Lock)",
+    description:
+      "Prevent sand drift and dune migration with Sand-Lock — Gulf Elite’s flagship product engineered for desert infrastructure and pipeline corridors.",
+    image: "http://127.0.0.1:54321/storage/v1/object/public/gulf/sand-lock.webp",
+    video: "https://www.youtube.com/embed/bu5wM57PeXI",
+    gallery: [
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf/sand-lock.webp",
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf/sand-lock-1.webp",
+    ],
+    content: `
+      <h2>Why Sand Stabilization Matters</h2>
+      <p>Shifting sands are a critical threat to infrastructure in desert regions. Roads, pipelines, and foundations can be buried or destabilized within weeks without proper sand control.</p>
+      <blockquote>“Without stabilization, infrastructure longevity drops by over 70%.”</blockquote>
+      <p>Sand-Lock binds the top 5–10 cm of surface sand, forming a crust that withstands high wind speeds while remaining water-permeable and eco-safe.</p>
+    `,
+  },
+  {
+    slug: "dust-control",
+    title: "Dust Control",
+    description:
+      "Minimize airborne particulate matter on construction sites, logistics yards, and open landscapes using our advanced dust control systems.",
+    image: "http://127.0.0.1:54321/storage/v1/object/public/gulf/dust-control.webp",
+    video: "https://www.youtube.com/embed/3MPku5zO_gM",
+    gallery: [
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf/dust-control.webp",
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf/dust-lock.webp",
+    ],
+    content: `
+      <h2>Clean Air on Job Sites</h2>
+      <p>Dust is not just a nuisance — it's a health hazard and an environmental compliance risk.</p>
+      <p>Our dust suppression systems form a microfilm barrier that keeps particles locked down, especially PM10 and PM2.5, with over 80% reduction efficiency.</p>
+      <blockquote>“Our clients report improved visibility and safer working conditions within 24 hours.”</blockquote>
+    `,
+  },
+  {
+    slug: "berm-stabilization",
+    title: "Berm Stabilization",
+    description:
+      "Secure earthen berms and embankments from wind and water erosion using high-adhesion polymer formulations.",
+    image: "http://127.0.0.1:54321/storage/v1/object/public/gulf/terra-lock.webp",
+    video: "",
+    gallery: [
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf/terra-lock.webp",
+    ],
+    content: `
+      <h2>Preserving Engineered Berms</h2>
+      <p>Whether for oil pipelines or rail infrastructure, berms must maintain structural integrity year-round.</p>
+      <p>Our polymer-infused Terra-Lock system adds tensile strength to berm surfaces while enabling natural vegetation growth when needed.</p>
+    `,
+  },
+  {
+    slug: "slope-protection",
+    title: "Slope Protection",
+    description:
+      "Control erosion and slippage on inclined terrain — ideal for transmission towers, road cuttings, and sloped embankments.",
+    image: "http://127.0.0.1:54321/storage/v1/object/public/gulf/electric.webp",
+    video: "",
+    gallery: [
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf/electric.webp",
+    ],
+    content: `
+      <h2>Protecting Sloped Terrain</h2>
+      <p>Slope failures can cause infrastructure collapse and downtime. Gulf Elite offers advanced slope stabilization using geotextile-compatible polymer solutions.</p>
+      <blockquote>“Zero slippage events after 12 months of monitoring.”</blockquote>
+    `,
+  },
+  {
+    slug: "road-construction",
+    title: "Road Construction Stabilization",
+    description:
+      "Enhance subgrade and base layer strength with our soil binders, cutting construction time and reducing material cost.",
+    image: "http://127.0.0.1:54321/storage/v1/object/public/gulf/road.webp",
+    video: "",
+    gallery: [
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf/road.webp",
+    ],
+    content: `
+      <h2>Optimizing Road Bases</h2>
+      <p>In desert terrains, conventional road construction often fails without proper stabilization. Our systems allow for in-situ stabilization of existing soils.</p>
+      <p>Reduced need for gravel import saves millions in logistics and accelerates delivery.</p>
+    `,
+  },
+  {
+    slug: "road-erosion-control",
+    title: "Road Erosion Control",
+    description:
+      "Prevent water runoff and wind erosion on service roads and access tracks using layered protective coatings.",
+    image: "http://127.0.0.1:54321/storage/v1/object/public/gulf/slope.webp",
+    video: "",
+    gallery: [
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf/slope.webp",
+    ],
+    content: `
+      <h2>Keeping Roads Intact</h2>
+      <p>Service roads are often neglected until it’s too late. Erosion causes washouts and vehicle hazards. Our erosion control solutions extend road lifespan by forming hydrophobic barriers across vulnerable surfaces.</p>
+    `,
+  },
+]
+.map((service) => ({
+    params: { slug: service.slug },
+  }));
+}
+---
+<BaseLayout>
+  <PageHeader
+    title={service.title}
+    image={service.image}
+    breadcrumbs={[
+      { label: "Home", href: "/" },
+      { label: "Services", href: "/services" },
+      { label: service.title },
+    ]}
+  />
+
+  <!-- Description + Content -->
+  <section class="py-20 bg-white dark:bg-black text-gray-900 dark:text-white">
+    <div class="max-w-4xl mx-auto px-6 prose dark:prose-invert prose-lg">
+      <p class="text-xl mb-6 text-neutral-600 dark:text-neutral-300">
+        {service.description}
+      </p>
+      <div set:html={service.content} />
+    </div>
+  </section>
+
+  <!-- Optional Gallery -->
+  {service.gallery && (
+    <section class="py-16 darker dark:bg-gray-900">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-6">
+        {service.gallery.map((img, i) => (
+          <img
+            src={img}
+            alt={`Gallery image ${i + 1}`}
+            class="rounded-xl shadow-md object-cover w-full h-64"
+            loading="lazy"
+          />
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- Optional Video -->
+  {service.video && (
+    <section class="py-16 bg-white dark:bg-black">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="h-[500px] rounded-xl overflow-hidden shadow-lg">
+          <iframe
+            src={service.video}
+            title="Service Video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            class="w-full h-full"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+  )}
+</BaseLayout>

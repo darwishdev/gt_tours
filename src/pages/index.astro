@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import HomeBanner from '../components/home/Banner.astro'
+import HomeAbout from '../components/home/About.astro'
+import HomeBlog from '../components/home/Blog.astro'
+import HomeServices from '../components/home/Services.astro'
+import HomeTsetemonials from '../components/home/Testemonials.astro'
+import HomeMap from '../components/home/HomeMap.astro'
+import HomePartners from '../components/home/Partners.astro'
+import HomeProjects from '../components/home/Projects.vue'
+import {AnimateGrid} from '../components/ui/animate-grid'
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import {apiClient} from '../pkg/api/ApiClient.ts'
+// const { tenant } = await apiClient.tenantFind({tenantId : 2});
+const tenant = {}
+
+const cards = Array.from({ length: 16 }, () => ({
+  logo: "logo",
+}));
+
+const blogPosts = [
+  {
+    title: "5 Ways Soil Stabilization Saves Infrastructure Costs",
+    logo:"",
+    date: "June 28, 2025",
+    excerpt:
+      "Discover how advanced chemical stabilization methods reduce long-term maintenance and extend the life of desert roads and foundations.",
+    image:
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf//beautiful-view-tranquil-desert-clear-sky-captured-morocco.webp",
+    category: "Stabilization",
+  },
+  {
+    title: "Case Study: Aramco’s Shaybah Desert Deployment",
+    logo:"",
+    date: "June 15, 2025",
+    excerpt:
+      "A behind-the-scenes look at how Gulf Elite helped Aramco stabilize vast sand dunes in one of the world's toughest environments.",
+    image:
+      "http://127.0.0.1:54321/storage/v1/object/public/gulf//aramco-1.webp",
+    category: "Projects",
+  },
+  {
+    title: "Eco-Friendly Polymers for Dust Suppression",
+    date: "May 30, 2025",
+    logo:"",
+    excerpt:
+      "Our newest formulations not only lock dust instantly but are also biodegradable, non-toxic, and optimized for Gulf conditions.",
+    image: "http://127.0.0.1:54321/storage/v1/object/public/gulf//eco.webp",
+    category: "R&D",
+  },
+];
+
+const trips = [
+  {
+    title: "Ras Mohamed By Boat",
+    description:
+      "A full-day boat trip to Ras Mohamed National Park with snorkeling stops, crystal-clear waters, and vibrant coral reefs.",
+    location: "Ras Mohamed – Sharm El Sheikh",
+    category: "Sea Trip",
+    src: "/trips/ras-mohamed-boat.jpg",
+  },
+  {
+    title: "Ras Mohamed By Bus",
+    description:
+      "Explore Ras Mohamed by land with guided stops at the park’s top viewpoints, mangroves, and snorkeling beaches.",
+    location: "Ras Mohamed – South Sinai",
+    category: "Nature Reserve",
+    src: "/trips/ras-mohamed-bus.jpg",
+  },
+  {
+    title: "Colored Canyon",
+    description:
+      "Walk through the stunning Colored Canyon with its layered rock formations and narrow passages shaped by nature.",
+    location: "Nuweiba – Sinai",
+    category: "Adventure",
+    src: "/trips/colored-canyon.jpg",
+  },
+  {
+    title: "Dahab Blue Hole",
+    description:
+      "Visit the world-famous Blue Hole in Dahab for snorkeling, diving, and relaxing by the Red Sea coast.",
+    location: "Dahab – Sinai",
+    category: "Diving & Snorkeling",
+    src: "/trips/blue-hole.jpg",
+  },
+  {
+    title: "St. Catherine",
+    description:
+      "Discover St. Catherine city and its historic monastery, one of the oldest working monasteries in the world.",
+    location: "St. Catherine – Sinai",
+    category: "Cultural",
+    src: "/trips/st-catherine.jpg",
+  },
+  {
+    title: "Moses Mountain",
+    description:
+      "Climb Moses Mountain at sunrise for a spiritual and scenic hiking experience above the Sinai mountains.",
+    location: "Mount Sinai – St. Catherine",
+    category: "Hiking",
+    src: "/trips/mount-sinai.jpg",
+  },
+  {
+    title: "Petra Day Tour",
+    description:
+      "A cross-border day trip to Petra in Jordan to explore the ancient rock-carved city and its iconic treasury.",
+    location: "Petra – Jordan",
+    category: "International",
+    src: "/trips/petra.jpg",
+  },
+  {
+    title: "Ghibli Race Way",
+    description:
+      "Enjoy a desert adventure at Ghibli Raceway with quad bikes, buggies, and Bedouin-style experiences.",
+    location: "Sharm El Sheikh Desert",
+    category: "Desert Safari",
+    src: "/trips/ghibli.jpg",
+  },
+];;
+---
+
+<!doctype html>
+<BaseLayout title={tenant?.tenantName}>
+  <HomeBanner />
+  <HomeAbout />
+  <HomeServices class="darker" />
+  <HomeTsetemonials />
+  <HomeMap />
+  <HomeProjects 
+title="Featured Trips Across Egypt"
+  description="Browse our carefully selected trips designed to showcase the best of Egypt — from ancient wonders and cultural landmarks to seaside escapes and desert adventures. Each trip is professionally organized to give you a smooth, memorable, and enriching travel experience."
+    items={trips}
+    client:only="vue"/>
+  <HomeBlog   class="darker"/>
+  <HomePartners />
+</BaseLayout>
